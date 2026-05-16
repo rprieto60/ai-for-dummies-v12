@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Dummies (Local Business Edition) - Get More Customers on Autopilot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a2e;
+            background: #fff;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+        .hero-text .subtitle {
+            font-size: 1.35rem;
+            opacity: 0.95;
+            margin-bottom: 32px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+        .hero-image {
+            position: relative;
+        }
+        
+        /* FLOATING BADGES */
+        .floating-badges {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .badge-icon {
+            font-size: 1.1rem;
+        }
+        
+        /* PRICE & CTA */
+        .price-section {
+            margin-bottom: 24px;
+        }
+        .price {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .price-note {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #22c55e;
+            color: white;
+            padding: 20px 48px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 40px rgba(34, 197, 94, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(34, 197, 94, 0.5);
+        }
+        .cta-arrow {
+            transition: transform 0.3s ease;
+        }
+        .cta-button:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+        
+        /* SECTIONS */
+        .section {
+            padding: 100px 0;
+        }
+        .section-dark {
+            background: #0f0f1a;
+            color: white;
+        }
+        .section-gray {
+            background: #f8f9fc;
+        }
+        
+        /* PROBLEM SECTION */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .problem-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+        .problem-card-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .problem-card h3 {
+            font-size: 1.1rem;
+            color: #1a1a2e;
+            margin-bottom: 8px;
+        }
+        .problem-card p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* FEATURES SECTION */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+        .feature-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #1a1a2e;
+        }
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* TIMELINE */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 48px;
+            position: relative;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin: 0 auto 16px;
+            color: #667eea;
+        }
+        .timeline-item h4 {
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .timeline-item p {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        /* OBJECTIONS */
+        .objections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .objection-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 32px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .objection-card:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.2);
+        }
+        .objection-card h4 {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .objection-card p {
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+        
+        /* TESTIMONIALS */
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            margin: 24px 0;
+        }
+        .testimonial-stars {
+            color: #fbbf24;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+        .testimonial-text {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .author-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        .author-info h4 {
+            color: #1a1a2e;
+            margin-bottom: 4px;
+        }
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* WHAT YOU GET */
+        .what-you-get {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            padding: 48px;
+            border-radius: 24px;
+            margin: 48px 0;
+        }
+        .what-you-get h3 {
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            color: #065f46;
+        }
+        .checklist {
+            list-style: none;
+            padding: 0;
+        }
+        .checklist li {
+            padding: 16px 0;
+            padding-left: 48px;
+            position: relative;
+            font-size: 1.1rem;
+            border-bottom: 1px solid rgba(6, 95, 70, 0.1);
+        }
+        .checklist li:last-child {
+            border-bottom: none;
+        }
+        .checklist li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            width: 32px;
+            height: 32px;
+            background: #22c55e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        
+        /* BUMP OFFER */
+        .bump-offer {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border: 3px solid #f59e0b;
+            padding: 48px;
+            border-radius: 24px;
+            margin: 48px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .bump-offer::before {
+            content: '🔥';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+        }
+        .bump-offer h3 {
+            color: #92400e;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        .bump-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #b45309;
+            margin: 24px 0;
+        }
+        .bump-features {
+            text-align: left;
+            display: inline-block;
+            margin: 24px 0;
+        }
+        .bump-features li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        .bump-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: bold;
+        }
+        
+        /* URGENCY */
+        .urgency-bar {
+            background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 24px;
+            text-align: center;
+            border-radius: 16px;
+            margin: 48px 0;
+        }
+        .urgency-bar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        
+        /* GUARANTEE */
+        .guarantee-box {
+            background: white;
+            border: 3px solid #22c55e;
+            padding: 48px;
+            border-radius: 24px;
+            text-align: center;
+            margin: 48px 0;
+        }
+        .guarantee-icon {
+            font-size: 4rem;
+            margin-bottom: 16px;
+        }
+        .guarantee-box h3 {
+            color: #15803d;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+        }
+        
+        /* FOOTER CTA */
+        .footer-cta {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .footer-cta h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+        .footer-price {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 32px 0;
+        }
+        .footer-features {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0;
+            flex-wrap: wrap;
+        }
+        .footer-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        /* SECTION HEADERS */
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #1a1a2e;
+            line-height: 1.2;
+        }
+        .section-dark h2 {
+            color: white;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 700px;
+        }
+        .section-dark .section-subtitle {
+            color: rgba(255,255,255,0.7);
+        }
+        
+        /* HERO IMAGE STYLING */
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .hero-image-wrapper {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .hero-image-wrapper img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+        }
+        .image-caption {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            .hero-image {
+                order: -1;
+            }
+            .hero-image-container {
+                max-width: 350px;
+            }
+            .problem-grid,
+            .features-grid,
+            .objections-grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline {
+                flex-direction: column;
+                gap: 32px;
+            }
+            .timeline::before {
+                display: none;
+            }
+            .footer-features {
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="floating-badges">
+                    <span class="badge"><span class="badge-icon">🚀</span> New Release</span>
+                    <span class="badge"><span class="badge-icon">⭐</span> 4.9/5 Rating</span>
+                    <span class="badge"><span class="badge-icon">📥</span> Instant Download</span>
+                </div>
+                <h1>AI for Dummies<br>(Local Business Edition)</h1>
+                <p class="subtitle">The Simple, Step-by-Step Guide to Using AI to Get More Customers and Scale Your Revenue—Without Hiring a Tech Team</p>
+                <div class="price-section">
+                    <div class="price">$27</div>
+                    <p class="price-note">One-time payment • Lifetime updates included</p>
+                </div>
+                <a href="#order" class="cta-button">
+                    Get Instant Access
+                    <span class="cta-arrow">→</span>
+                </a>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-container">
+                    <div class="hero-image-wrapper">
+                        <img src="ai-assistant.jpg" alt="AI Assistant helping grow your business">
+                    </div>
+                    <p class="image-caption">Your AI assistant working 24/7 to grow your business</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section class="section">
+    <div class="container">
+        <h2>You're Working Harder Than Ever,<br>But Your Business Isn't Growing</h2>
+        <p class="section-subtitle">Every morning, you wake up knowing you need more customers. But the old ways aren't working like they used to.</p>
+        
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-card-icon">📉</div>
+                <h3>Word-of-Mouth Dried Up</h3>
+                <p>Referrals aren't coming in like they used to, and you're not sure why.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">👀</div>
+                <h3>Competitors Everywhere</h3>
+                <p>Your competition is showing up all over social media and Google.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">⏰</div>
+                <h3>Wasting Hours on Social</h3>
+                <p>Spending hours posting with nothing to show for it.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">⭐</div>
+                <h3>Bad Reviews Unanswered</h3>
+                <p>Negative reviews sit while potential customers choose someone else.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">🤖</div>
+                <h3>Confused About AI</h3>
+                <p>You know you should use AI but have no idea where to start.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-card-icon">😴</div>
+                <h3>Working 24/7</h3>
+                <p>You're exhausted but the business isn't growing.</p>
+            </div>
+        </div>
+        
+        <div class="business-owner-section" style="margin: 64px auto; text-align: center; max-width: 800px;">
+            <img src="business-owner.jpg" alt="Local business owner struggling with marketing" style="max-width: 85%; height: auto; border-radius: 18px; box-shadow: 0 18px 50px rgba(0,0,0,0.14);">
+            <p style="margin-top: 16px; color: #666; font-style: italic; font-size: 1.1rem;">Sound familiar? You're not alone.</p>
+        </div>
+        
+        <div class="urgency-bar" style="margin-top: 64px;">
+            <h3>⚠️ Here's the Truth</h3>
+            <p>While you're manually posting on Facebook, your competitors use AI to automate marketing, respond to reviews instantly, and attract customers 24/7—even while they sleep.</p>
+        </div>
+    </div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="section section-gray">
+    <div class="container">
+        <h2>What If You Could Put Your Customer Acquisition on Autopilot?</h2>
+        <p class="section-subtitle"><strong>AI for Dummies (Local Business Edition)</strong> is the first guide written specifically for local business owners who want to leverage AI—without needing a computer science degree.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Create 30 Days of Content in 30 Minutes</h3>
+                <p>AI-generated posts that sound like you, not a robot. Schedule a month of content in one sitting.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Respond to Every Review Automatically</h3>
+                <p>Turn angry customers into raving fans while you focus on your business.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Generate Leads While You Sleep</h3>
+                <p>AI chatbots qualify prospects and book appointments 24/7.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3>Write Emails & Ads in Minutes</h3>
+                <p>Professional copy for promotions, not hours of staring at a blank page.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Track Your Reputation</h3>
+                <p>Know immediately when someone mentions your business anywhere online.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Make Data-Driven Decisions</h3>
+                <p>Stop guessing what works. Know for sure with AI analytics.</p>
+            </div>
+        </div>
+        
+        <h3 style="text-align: center; margin-top: 64px; margin-bottom: 32px; font-size: 1.8rem;">The 37-Minute Setup: From Zero to AI-Powered</h3>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">0-5</div>
+                <h4>Choose Your Tools</h4>
+                <p>Get exact recommendations</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">5-15</div>
+                <h4>Set Up Content</h4>
+                <p>AI content system ready</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">15-25</div>
+                <h4>Auto-Reviews</h4>
+                <p>Configure responses</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">25-30</div>
+                <h4>Lead Capture</h4>
+                <p>Connect your system</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">30-37</div>
+                <h4>Deploy & Test</h4>
+                <p>Go live with AI</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OBJECTIONS SECTION -->
+<section class="section section-dark">
+    <div class="container">
+        <h2>"But What About..."</h2>
+        <p class="section-subtitle">Let me address your concerns right now</p>
+        
+        <div class="objections-grid">
+            <div class="objection-card">
+                <h4>🕐 "I don't have time"</h4>
+                <p>Each chapter takes 10-15 minutes. Read during lunch, implement one strategy per day. Most see results from the very first tactic.</p>
+            </div>
+            <div class="objection-card">
+                <h4>💻 "I'm not technical"</h4>
+                <p>Perfect. This assumes zero tech knowledge. If you can use Facebook, you can use these AI tools. I explain everything in plain English.</p>
+            </div>
+            <div class="objection-card">
+                <h4>📢 "AI is overhyped"</h4>
+                <p>You're right—most AI IS overhyped. That's why this focuses ONLY on the 5-7 tools that actually work for local businesses. No fluff.</p>
+            </div>
+            <div class="objection-card">
+                <h4>📚 "I never finish courses"</h4>
+                <p>This isn't a 40-hour course. It's a 90-minute read you can finish in one sitting. Most have their first AI system running the same day.</p>
+            </div>
+            <div class="objection-card">
+                <h4>🏃 "My competitors already use AI"</h4>
+                <p>95% of local businesses are NOT using AI effectively. By implementing even ONE strategy, you'll leapfrog 90% of your competition.</p>
+            </div>
+            <div class="objection-card">
+                <h4>🏢 "Will this work for my industry?"</h4>
+                <p>Works for ANY local business. Included examples for HVAC, dental, restaurants, auto repair, landscaping, and more. Principles are universal.</p>
+            </div>
+            <div class="objection-card">
+                <h4>🆘 "What if I need help?"</h4>
+                <p>Includes my personal email for questions. Plus, grab the workshop bump for live walkthroughs where I show you exactly how to set everything up.</p>
+            </div>
+            <div class="objection-card">
+                <h4>💰 "Isn't AI expensive?"</h4>
+                <p>Most tools have free tiers or cost under $20/month. Compare to hiring an agency ($2,000+/month). AI pays for itself with your first customer.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- VISUALIZATION SECTION -->
+<section class="section">
+    <div class="container">
+        <h2>Imagine This...</h2>
+        <p class="section-subtitle">Three scenes from your future with AI-powered business growth</p>
+        
+        <div class="testimonial-card" style="border-left: 4px solid #667eea;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <span style="font-size: 2rem;">☕</span>
+                <h3 style="margin: 0; color: #667eea;">Scene 1: Tuesday Morning, 8:47 AM</h3>
+            </div>
+            <p style="font-size: 1.15rem; line-height: 1.8;">You're having coffee and checking your phone. Instead of zero notifications, you see: <strong>3 new leads from your AI chatbot overnight, 5 positive reviews automatically responded to, your scheduled posts already have 47 engagements, and an appointment booked while you slept.</strong> You smile, finish your coffee, and head to work knowing your marketing is handled.</p>
+        </div>
+        
+        <div class="testimonial-card" style="border-left: 4px solid #22c55e;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <span style="font-size: 2rem;">📞</span>
+                <h3 style="margin: 0; color: #22c55e;">Scene 2: Friday Afternoon</h3>
+            </div>
+            <p style="font-size: 1.15rem; line-height: 1.8;">Your competitor—who's been in business 10 years longer—calls to ask how you're "everywhere" all of a sudden. <strong>Your secret?</strong> While they've been manually posting and hoping, you've built an AI-powered customer acquisition machine that runs 24/7.</p>
+        </div>
+        
+        <div class="testimonial-card" style="border-left: 4px solid #f59e0b;">
+            <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+                <span style="font-size: 2rem;">📈</span>
+                <h3 style="margin: 0; color: #f59e0b;">Scene 3: 30 Days From Now</h3>
+            </div>
+            <p style="font-size: 1.15rem; line-height: 1.8;">You look at your numbers and realize you've added <strong>12 new customers without working a single extra hour.</strong> Your revenue is up. Your stress is down. And you finally have time to focus on the parts of your business you actually enjoy.</p>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT YOU GET SECTION -->
+<section class="section section-gray">
+    <div class="container">
+        <div class="happy-customer-section" style="margin: 0 auto 48px; text-align: center; max-width: 800px;">
+            <img src="happy-customer.jpg" alt="Happy business owner after implementing AI" style="max-width: 85%; height: auto; border-radius: 18px; box-shadow: 0 18px 50px rgba(0,0,0,0.14);">
+            <p style="margin-top: 16px; color: #666; font-style: italic; font-size: 1.1rem;">Imagine the relief when AI handles your marketing for you.</p>
+        </div>
+        
+        <h2>Here's Exactly What You Get</h2>
+        
+        <div class="what-you-get">
+            <h3>📘 AI for Dummies (Local Business Edition) Digital Book</h3>
+            <ul class="checklist">
+                <li>The complete 90-minute read that transforms how you approach marketing</li>
+                <li>Step-by-step setup instructions for every tool (with screenshots)</li>
+                <li>The "37-Minute Setup" quick-start guide</li>
+                <li>Industry-specific examples for 10+ local business types</li>
+                <li>My personal tool recommendations (the exact ones I use)</li>
+                <li>Prompt templates you can copy and paste</li>
+                <li>Automation workflows that run while you sleep</li>
+                <li>Lifetime updates (as AI evolves, so does this guide)</li>
+            </ul>
+        </div>
+        
+        <div class="bump-offer">
+            <h3>🚀 SPECIAL WORKSHOP OFFER</h3>
+            <p style="font-size: 1.3rem; margin: 16px 0;">Add the Live Workshop for Just</p>
+            <div class="bump-price">$47</div>
+            <p style="font-size: 1.1rem; margin-bottom: 24px;">Join me for a 90-minute live workshop where I'll:</p>
+            <ul class="bump-features">
+                <li>Walk through the entire book with real-world examples</li>
+                <li>Show you my screen as I set up each AI tool</li>
+                <li>Answer your specific questions about your business</li>
+                <li>Give you the exact prompts and templates I use</li>
+                <li>Record everything so you can watch again later</li>
+            </ul>
+            <p style="margin-top: 24px; padding: 12px 24px; background: rgba(146, 64, 14, 0.1); border-radius: 8px; display: inline-block; font-weight: 600; color: #92400e;">⚡ Only Available on This Page</p>
+        </div>
+    </div>
+</section>
+
+<!-- URGENCY & GUARANTEE -->
+<section class="section">
+    <div class="container">
+        <div class="urgency-bar">
+            <h3>⏰ Why You Need to Act Now</h3>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">Every day you wait, your competitors get further ahead. The businesses that adopt AI now will dominate their markets in 12 months. <strong>This is the biggest shift in business since the internet.</strong></p>
+            <p style="margin-top: 16px; font-weight: 700; font-size: 1.1rem;">The price will increase to $97 soon. Lock in the $27 founder pricing now.</p>
+        </div>
+        
+        <div class="guarantee-box">
+            <div class="guarantee-icon">🛡️</div>
+            <h3>7-Day "Try It and See" Money-Back Guarantee</h3>
+            <p style="font-size: 1.2rem; line-height: 1.7;">Get the book. Read it. Implement ONE strategy. If you don't see results in 7 days, email me for a full refund. <strong>No questions. No hassle. I'll even let you keep the book.</strong></p>
+            <p style="margin-top: 16px; font-weight: 700; color: #15803d;">I'm taking all the risk because I know this works.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta" id="order">
+    <div class="container">
+        <h2>Get AI for Dummies (Local Business Edition) Now</h2>
+        
+        <div class="footer-features">
+            <span class="footer-feature">✓ Instant Download</span>
+            <span class="footer-feature">✓ 7-Day Guarantee</span>
+            <span class="footer-feature">✓ Lifetime Updates</span>
+        </div>
+        
+        <div class="footer-price">$27</div>
+        
+        <a href="#" class="cta-button" style="font-size: 1.5rem; padding: 24px 56px;">
+            Get Instant Access
+            <span class="cta-arrow">→</span>
+        </a>
+        
+        <div style="margin-top: 48px; padding: 32px; background: rgba(255,255,255,0.1); border-radius: 16px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <h3 style="color: #fbbf24; margin-bottom: 16px;">⚡ Add the Workshop for $47 More</h3>
+            <p style="margin-bottom: 8px;">90-minute live training + recordings + Q&A</p>
+            <p style="font-size: 0.9rem; opacity: 0.7;">(Select on the next page)</p>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.6;">🔒 Secure checkout • Instant delivery • Start in the next 5 minutes</p>
+    </div>
+</section>
+
+</body>
+</html>
