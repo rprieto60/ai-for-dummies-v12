@@ -73,7 +73,8 @@
             display: flex;
             gap: 16px;
             margin-bottom: 32px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            justify-content: flex-start;
         }
         .badge {
             background: rgba(255,255,255,0.2);
@@ -542,6 +543,17 @@
             .hero-text h1 {
                 font-size: 2.5rem;
             }
+            .hero-text h2 {
+                font-size: 1.8rem !important;
+            }
+            .floating-badges {
+                flex-wrap: nowrap !important;
+                justify-content: center !important;
+            }
+            .badge {
+                font-size: 0.8rem !important;
+                padding: 6px 12px !important;
+            }
             .hero-image {
                 order: -1;
             }
@@ -579,7 +591,8 @@
                     <span class="badge"><span class="badge-icon">⭐</span> 4.9/5 Rating</span>
                     <span class="badge"><span class="badge-icon">📥</span> Instant Download</span>
                 </div>
-                <h1>AI for Dummies<br>(Local Business Edition)</h1>
+                <h1>AI for Dummies</h1>
+                <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 16px; margin-top: -10px;">(Local Business Edition)</h2>
                 <p class="subtitle">The Simple, Step-by-Step Guide to Using AI to Get More Customers and Scale Your Revenue—Without Hiring a Tech Team</p>
                 <div class="price-section">
                     <div class="price">$27</div>
