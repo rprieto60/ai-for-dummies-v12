@@ -543,9 +543,12 @@
             .hero-text h1 {
                 font-size: 2.5rem;
             }
-            .hero-text h2 {
-                font-size: 1.4rem !important;
+            .hero-header h2 {
+                font-size: 1.6rem !important;
                 white-space: nowrap !important;
+            }
+            .hero-header .floating-badges {
+                justify-content: center !important;
             }
             .floating-badges {
                 flex-wrap: nowrap !important;
@@ -585,15 +588,19 @@
 <!-- HERO SECTION -->
 <section class="hero">
     <div class="container">
+        <!-- Centered Header Section -->
+        <div class="hero-header" style="text-align: center; margin-bottom: 60px; position: relative; z-index: 1;">
+            <div class="floating-badges" style="justify-content: center;">
+                <span class="badge"><span class="badge-icon">🚀</span> New Release</span>
+                <span class="badge"><span class="badge-icon">⭐</span> 4.9/5 Rating</span>
+                <span class="badge"><span class="badge-icon">📥</span> Instant Download</span>
+            </div>
+            <h1 style="margin-bottom: 8px;">AI for Dummies</h1>
+            <h2 style="font-size: 2.5rem; font-weight: 700; color: white; margin-bottom: 0; white-space: nowrap;">(Local Business Edition)</h2>
+        </div>
+        
         <div class="hero-content">
             <div class="hero-text">
-                <div class="floating-badges">
-                    <span class="badge"><span class="badge-icon">🚀</span> New Release</span>
-                    <span class="badge"><span class="badge-icon">⭐</span> 4.9/5 Rating</span>
-                    <span class="badge"><span class="badge-icon">📥</span> Instant Download</span>
-                </div>
-                <h1>AI for Dummies</h1>
-                <h2 style="font-size: 2.2rem; font-weight: 700; color: white; margin-bottom: 16px; margin-top: -10px; white-space: nowrap;">(Local Business Edition)</h2>
                 <p class="subtitle">The Simple, Step-by-Step Guide to Using AI to Get More Customers and Scale Your Revenue—Without Hiring a Tech Team</p>
                 <div class="price-section">
                     <div class="price">$27</div>
